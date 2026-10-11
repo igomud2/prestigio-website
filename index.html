@@ -3,36 +3,474 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prestigio - Poolside and Bar</title>
+  <meta name="description" content="Prestigio Poolside & Bar - Order food, drinks, and reserve your table from our app.">
+  <meta name="theme-color" content="#1A1A2E">
+  <title>Prestigio - Poolside & Bar | Download Our App</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%231A1A2E%22 rx=%2220%22/><text x=%2250%22 y=%2265%22 font-size=%2260%22 font-weight=%22bold%22 fill=%22%23E94560%22 text-anchor=%22middle%22 font-family=%22Arial%22>P</text></svg>">
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: linear-gradient(135deg, #1A1A2E 0%, #16213E 100%);
-      color: white; text-align: center; min-height: 100vh;
-      display: flex; flex-direction: column; justify-content: center; align-items: center;
-      padding: 20px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #1A1A2E;
+      color: #ffffff;
+      overflow-x: hidden;
+      line-height: 1.6;
     }
-    .logo { font-size: 48px; font-weight: 900; color: #E94560; letter-spacing: 4px; margin-bottom: 8px; }
-    .tagline { font-size: 18px; color: #aaa; margin-bottom: 40px; }
+
+    /* ============ NAVBAR ============ */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 18px 40px;
+      background: rgba(22, 33, 62, 0.85);
+      backdrop-filter: blur(12px);
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .logo {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 4px;
+      color: #E94560;
+    }
+    nav ul { display: flex; list-style: none; gap: 28px; }
+    nav a {
+      color: #ccc;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav a:hover { color: #E94560; }
+    @media (max-width: 700px) { nav ul { display: none; } nav { padding: 14px 20px; } }
+
+    /* ============ HERO ============ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image: url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=1600');
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.35);
+      z-index: 0;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(180deg,
+        rgba(26, 26, 46, 0.85) 0%,
+        rgba(26, 26, 46, 0.65) 50%,
+        rgba(26, 26, 46, 1) 100%);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 8px 18px;
+      background: rgba(233, 69, 96, 0.15);
+      border: 1px solid rgba(233, 69, 96, 0.4);
+      border-radius: 30px;
+      color: #E94560;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    h1 {
+      font-size: clamp(42px, 8vw, 72px);
+      font-weight: 900;
+      letter-spacing: 8px;
+      background: linear-gradient(135deg, #ffffff 0%, #E94560 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .subtitle {
+      font-size: clamp(16px, 2.5vw, 20px);
+      color: #ccc;
+      letter-spacing: 3px;
+      margin-bottom: 40px;
+    }
+    .tagline {
+      font-size: 15px;
+      color: #999;
+      max-width: 520px;
+      margin: 0 auto 40px;
+    }
+
     .download-btn {
-      display: inline-block; background: #E94560; color: white;
-      padding: 18px 48px; border-radius: 12px; text-decoration: none;
-      font-size: 20px; font-weight: 700; transition: all 0.3s;
-      box-shadow: 0 4px 15px rgba(233, 69, 96, 0.4);
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: linear-gradient(135deg, #E94560 0%, #c73650 100%);
+      color: white;
+      padding: 20px 52px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 10px 30px rgba(233, 69, 96, 0.4),
+                  0 0 0 0 rgba(233, 69, 96, 0.7);
+      animation: pulse 2.5s infinite;
+      position: relative;
     }
-    .download-btn:hover { background: #c73650; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(233, 69, 96, 0.6); }
-    .instructions { margin-top: 40px; font-size: 14px; color: #888; max-width: 400px; line-height: 1.6; }
-    .instructions strong { color: #E94560; }
+    .download-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(233, 69, 96, 0.6),
+                  0 0 0 0 rgba(233, 69, 96, 0);
+      animation: none;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 10px 30px rgba(233, 69, 96, 0.4), 0 0 0 0 rgba(233, 69, 96, 0.5); }
+      70% { box-shadow: 0 10px 30px rgba(233, 69, 96, 0.4), 0 0 0 20px rgba(233, 69, 96, 0); }
+      100% { box-shadow: 0 10px 30px rgba(233, 69, 96, 0.4), 0 0 0 0 rgba(233, 69, 96, 0); }
+    }
+
+    .meta {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 32px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      color: #888;
+    }
+    .meta span { display: flex; align-items: center; gap: 6px; }
+    .meta svg { width: 16px; height: 16px; }
+
+    /* ============ FEATURES ============ */
+    .features {
+      padding: 100px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 36px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #ffffff, #E94560);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .section-subtitle {
+      text-align: center;
+      color: #888;
+      margin-bottom: 60px;
+      font-size: 15px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .feature-card {
+      background: linear-gradient(145deg, #16213E 0%, #1f2a4a 100%);
+      border-radius: 20px;
+      padding: 36px 28px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      transition: all 0.35s;
+      text-align: center;
+    }
+    .feature-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(233, 69, 96, 0.4);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+    .feature-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 20px;
+      background: rgba(233, 69, 96, 0.15);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .feature-icon svg {
+      width: 30px;
+      height: 30px;
+      stroke: #E94560;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .feature-card h3 {
+      font-size: 19px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .feature-card p {
+      color: #999;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    /* ============ HOW IT WORKS ============ */
+    .how-it-works {
+      padding: 100px 24px;
+      background: linear-gradient(180deg, #1A1A2E 0%, #16213E 100%);
+    }
+    .steps {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 32px;
+    }
+    .step {
+      text-align: center;
+      position: relative;
+    }
+    .step-num {
+      width: 50px;
+      height: 50px;
+      margin: 0 auto 20px;
+      background: linear-gradient(135deg, #E94560, #c73650);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 900;
+      box-shadow: 0 8px 20px rgba(233, 69, 96, 0.4);
+    }
+    .step h4 {
+      font-size: 17px;
+      margin-bottom: 8px;
+    }
+    .step p {
+      color: #999;
+      font-size: 13px;
+    }
+
+    /* ============ CTA SECTION ============ */
+    .cta {
+      padding: 100px 24px;
+      text-align: center;
+      background: radial-gradient(circle at center, rgba(233, 69, 96, 0.15) 0%, transparent 70%);
+    }
+    .cta h2 {
+      font-size: 36px;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+    .cta p {
+      color: #999;
+      margin-bottom: 40px;
+      font-size: 15px;
+    }
+    .qr {
+      margin-top: 40px;
+      display: inline-block;
+      padding: 20px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+    .qr-label {
+      color: #888;
+      font-size: 13px;
+      margin-top: 16px;
+      letter-spacing: 1px;
+    }
+
+    /* ============ FOOTER ============ */
+    footer {
+      padding: 40px 24px;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      color: #666;
+      font-size: 13px;
+    }
+    footer .brand {
+      color: #E94560;
+      font-weight: 800;
+      letter-spacing: 3px;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 600px) {
+      .hero { padding: 100px 20px 60px; }
+      .download-btn { padding: 16px 40px; font-size: 16px; }
+      .features, .how-it-works, .cta { padding: 60px 20px; }
+      .section-title, .cta h2 { font-size: 26px; }
+    }
   </style>
 </head>
 <body>
+
+<!-- NAVBAR -->
+<nav>
   <div class="logo">PRESTIGIO</div>
-  <div class="tagline">Poolside and Bar</div>
-  <a class="download-btn" href="prestigio-v7.apk" download>Download App</a>
-  <div class="instructions">
-    After downloading, open the APK file on your Android phone.<br>
-    You may need to enable <strong>"Install from Unknown Sources"</strong> in your phone's settings.
+  <ul>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#download">Download</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <span class="badge">✦ Poolside &amp; Bar</span>
+    <h1>PRESTIGIO</h1>
+    <p class="subtitle">Poolside &amp; Bar</p>
+    <p class="tagline">
+      Order delicious food, refreshing drinks, and reserve your table —
+      all from the palm of your hand.
+    </p>
+
+    <a href="prestigio-v9.apk" class="download-btn" download>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+        <polyline points="7 10 12 15 17 10"/>
+        <line x1="12" y1="15" x2="12" y2="3"/>
+      </svg>
+      Download App
+    </a>
+
+    <div class="meta">
+      <span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="#E94560" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Secure Download
+      </span>
+      <span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="#E94560" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        Under 20 MB
+      </span>
+      <span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="#E94560" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+        Free Forever
+      </span>
+    </div>
   </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <h2 class="section-title">Everything You Need</h2>
+  <p class="section-subtitle">One app. Every part of your Prestigio experience.</p>
+
+  <div class="grid">
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg>
+      </div>
+      <h3>Browse the Menu</h3>
+      <p>Explore our full menu of dishes, meats, and hand-crafted drinks with photos and descriptions.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      </div>
+      <h3>Order From Your Seat</h3>
+      <p>Add items to your cart and place your order instantly. Track it live from "Placed" to "Ready".</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      </div>
+      <h3>Reserve a Table</h3>
+      <p>Book your spot by the pool in seconds. See your reservation status update in real time.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      </div>
+      <h3>Order History</h3>
+      <p>See all your past orders and reservations. Reorder your favorites in one tap.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-it-works" id="how">
+  <h2 class="section-title">How It Works</h2>
+  <p class="section-subtitle">Get started in less than a minute.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h4>Download</h4>
+      <p>Tap the Download button and install the app on your Android phone.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h4>Sign Up</h4>
+      <p>Create your free account in seconds with just an email.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h4>Order or Reserve</h4>
+      <p>Browse the menu, add to cart, or book a table instantly.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA + QR -->
+<section class="cta" id="download">
+  <h2>Ready to Experience Prestigio?</h2>
+  <p>Download the app now and start ordering in seconds.</p>
+
+  <a href="prestigio-v8.apk" class="download-btn" download>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+      <polyline points="7 10 12 15 17 10"/>
+      <line x1="12" y1="15" x2="12" y2="3"/>
+    </svg>
+    Download App
+  </a>
+
+  <div class="qr-label">— or scan to download —</div>
+  <div class="qr">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://prestigio-bar-app.netlify.app&color=1A1A2E&bgcolor=FFFFFF" alt="QR Code" width="180" height="180">
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="brand">PRESTIGIO</span>
+  <p>Poolside &amp; Bar · © 2026 · All rights reserved</p>
+  <p style="margin-top: 8px; font-size: 12px; color: #555;">
+    For Android devices. Enable "Install from Unknown Sources" when prompted.
+  </p>
+</footer>
+
 </body>
 </html>
