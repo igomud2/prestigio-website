@@ -86,6 +86,7 @@
       position: relative;
       z-index: 2;
       max-width: 720px;
+      width: 100%;
     }
     .badge {
       display: inline-block;
@@ -121,7 +122,61 @@
       font-size: 15px;
       color: #999;
       max-width: 520px;
-      margin: 0 auto 40px;
+      margin: 0 auto 32px;
+    }
+
+    /* ============ WARNING BANNER ============ */
+    .warning-banner {
+      background: linear-gradient(135deg, rgba(255, 165, 0, 0.12) 0%, rgba(255, 193, 7, 0.08) 100%);
+      border: 1px solid rgba(255, 165, 0, 0.35);
+      border-left: 4px solid #FFA500;
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin: 0 auto 32px;
+      max-width: 560px;
+      text-align: left;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      backdrop-filter: blur(6px);
+    }
+    .warning-banner .warning-icon {
+      flex-shrink: 0;
+      width: 26px;
+      height: 26px;
+      background: rgba(255, 165, 0, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+    .warning-banner .warning-icon svg {
+      width: 16px;
+      height: 16px;
+      stroke: #FFA500;
+      stroke-width: 2.5;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .warning-text { flex: 1; }
+    .warning-text h4 {
+      font-size: 14px;
+      font-weight: 700;
+      color: #FFC107;
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
+    }
+    .warning-text p {
+      font-size: 13px;
+      color: #ccc;
+      line-height: 1.6;
+      margin: 0;
+    }
+    .warning-text p strong {
+      color: #FFC107;
+      font-weight: 600;
     }
 
     .download-btn {
@@ -165,6 +220,81 @@
     }
     .meta span { display: flex; align-items: center; gap: 6px; }
     .meta svg { width: 16px; height: 16px; }
+
+    /* ============ INSTALL STEPS ============ */
+    .install-guide {
+      padding: 80px 24px;
+      background: linear-gradient(180deg, #1A1A2E 0%, #16213E 100%);
+      text-align: center;
+    }
+    .install-guide h2 {
+      font-size: 30px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #ffffff, #E94560);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .install-guide .section-sub {
+      color: #888;
+      font-size: 15px;
+      margin-bottom: 48px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .install-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 28px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .install-step {
+      background: rgba(22, 33, 62, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 16px;
+      padding: 28px 22px;
+      text-align: left;
+      transition: all 0.3s;
+    }
+    .install-step:hover {
+      border-color: rgba(233, 69, 96, 0.4);
+      transform: translateY(-4px);
+    }
+    .install-step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      background: linear-gradient(135deg, #E94560, #c73650);
+      border-radius: 50%;
+      font-weight: 900;
+      font-size: 15px;
+      margin-bottom: 14px;
+      box-shadow: 0 6px 16px rgba(233, 69, 96, 0.35);
+    }
+    .install-step h4 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+    .install-step p {
+      font-size: 13px;
+      color: #999;
+      line-height: 1.6;
+    }
+    .install-step code {
+      background: rgba(233, 69, 96, 0.15);
+      color: #E94560;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-family: 'Courier New', monospace;
+    }
 
     /* ============ FEATURES ============ */
     .features {
@@ -325,8 +455,12 @@
     @media (max-width: 600px) {
       .hero { padding: 100px 20px 60px; }
       .download-btn { padding: 16px 40px; font-size: 16px; }
-      .features, .how-it-works, .cta { padding: 60px 20px; }
+      .features, .how-it-works, .cta, .install-guide { padding: 60px 20px; }
       .section-title, .cta h2 { font-size: 26px; }
+      .install-guide h2 { font-size: 24px; }
+      .warning-banner { padding: 14px 16px; }
+      .warning-text h4 { font-size: 13px; }
+      .warning-text p { font-size: 12px; }
     }
   </style>
 </head>
@@ -336,8 +470,8 @@
 <nav>
   <div class="logo">PRESTIGIO</div>
   <ul>
+    <li><a href="#install">Install Guide</a></li>
     <li><a href="#features">Features</a></li>
-    <li><a href="#how">How It Works</a></li>
     <li><a href="#download">Download</a></li>
   </ul>
 </nav>
@@ -352,6 +486,27 @@
       Order delicious food, refreshing drinks, and reserve your table —
       all from the palm of your hand.
     </p>
+
+    <!-- ⚠️ WARNING BANNER -->
+    <div class="warning-banner">
+      <div class="warning-icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+          <line x1="12" y1="9" x2="12" y2="13"/>
+          <line x1="12" y1="17" x2="12.01" y2="17"/>
+        </svg>
+      </div>
+      <div class="warning-text">
+        <h4>⚠️ IMPORTANT — Read Before Installing</h4>
+        <p>
+          When you install this app, your phone will ask you to
+          <strong>allow installs from unknown sources</strong>.
+          This is a standard Android security prompt — the app is safe,
+          we just distribute it directly (not via the Play Store).
+          Tap <strong>"Allow"</strong> when prompted to continue.
+        </p>
+      </div>
+    </div>
 
     <a href="prestigio-v7.apk" class="download-btn" download>
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -375,6 +530,41 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="#E94560" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
         Free Forever
       </span>
+    </div>
+  </div>
+</section>
+
+<!-- INSTALL GUIDE -->
+<section class="install-guide" id="install">
+  <h2>How to Install the App</h2>
+  <p class="section-sub">
+    Since Prestigio is distributed directly (not via the Play Store),
+    your phone will show a security prompt during installation. Here's what to do:
+  </p>
+
+  <div class="install-steps">
+    <div class="install-step">
+      <div class="install-step-num">1</div>
+      <h4>Tap "Download App"</h4>
+      <p>The APK file will start downloading to your phone. It's under 20 MB and takes seconds.</p>
+    </div>
+
+    <div class="install-step">
+      <div class="install-step-num">2</div>
+      <h4>Open the APK File</h4>
+      <p>Once downloaded, tap <code>prestigio.apk</code> in your notifications or Downloads folder.</p>
+    </div>
+
+    <div class="install-step">
+      <div class="install-step-num">3</div>
+      <h4>Allow Unknown Sources</h4>
+      <p>Android will warn you with a prompt. Tap <strong style="color:#FFC107;">"Settings"</strong> → enable <strong style="color:#FFC107;">"Allow from this source"</strong> → then tap <strong style="color:#FFC107;">"Install"</strong>.</p>
+    </div>
+
+    <div class="install-step">
+      <div class="install-step-num">4</div>
+      <h4>Open &amp; Enjoy</h4>
+      <p>Sign up with your email, browse the menu, and start ordering. Welcome to Prestigio!</p>
     </div>
   </div>
 </section>
@@ -468,7 +658,7 @@
   <span class="brand">PRESTIGIO</span>
   <p>Poolside &amp; Bar · © 2026 · All rights reserved</p>
   <p style="margin-top: 8px; font-size: 12px; color: #555;">
-    For Android devices. Enable "Install from Unknown Sources" when prompted.
+    Distributed directly by Prestigio. Your data is secured with Firebase.
   </p>
 </footer>
 
