@@ -3,643 +3,349 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Prestigio Poolside & Bar - Order food, drinks, and reserve your table from our app.">
+  <meta name="description" content="Download the Prestigio app to order food and drinks, or reserve a table.">
   <meta name="theme-color" content="#1A1A2E">
-  <title>Prestigio - Poolside & Bar | Download Our App</title>
+  <title>Prestigio - Download</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%231A1A2E%22 rx=%2220%22/><text x=%2250%22 y=%2265%22 font-size=%2260%22 font-weight=%22bold%22 fill=%22%23E94560%22 text-anchor=%22middle%22 font-family=%22Arial%22>P</text></svg>">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       background: #1A1A2E;
       color: #ffffff;
-      overflow-x: hidden;
       line-height: 1.6;
     }
 
-    /* ============ NAVBAR ============ */
+    /* Navbar */
     nav {
       position: fixed;
       top: 0;
       width: 100%;
-      padding: 18px 40px;
-      background: rgba(22, 33, 62, 0.85);
-      backdrop-filter: blur(12px);
-      z-index: 1000;
+      padding: 16px 32px;
+      background: rgba(22, 33, 62, 0.9);
+      backdrop-filter: blur(10px);
+      z-index: 100;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }
-    .logo {
-      font-size: 22px;
+    .brand {
+      font-size: 20px;
       font-weight: 900;
       letter-spacing: 4px;
       color: #E94560;
     }
-    nav ul { display: flex; list-style: none; gap: 28px; }
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 24px;
+    }
     nav a {
-      color: #ccc;
+      color: #bbb;
       text-decoration: none;
       font-size: 14px;
-      font-weight: 500;
-      transition: color 0.3s;
+      transition: color 0.2s;
     }
     nav a:hover { color: #E94560; }
-    @media (max-width: 700px) { nav ul { display: none; } nav { padding: 14px 20px; } }
+    @media (max-width: 640px) {
+      nav { padding: 14px 20px; }
+      nav ul { display: none; }
+    }
 
-    /* ============ HERO ============ */
+    /* Hero */
     .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      padding: 140px 24px 80px;
       text-align: center;
-      padding: 120px 24px 80px;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background-image: url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=1600');
-      background-size: cover;
-      background-position: center;
-      filter: brightness(0.35);
-      z-index: 0;
-    }
-    .hero::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: linear-gradient(180deg,
-        rgba(26, 26, 46, 0.85) 0%,
-        rgba(26, 26, 46, 0.65) 50%,
-        rgba(26, 26, 46, 1) 100%);
-      z-index: 1;
-    }
-    .hero-content {
       position: relative;
-      z-index: 2;
-      max-width: 720px;
-      width: 100%;
+      background: linear-gradient(180deg, #1A1A2E 0%, #16213E 100%);
     }
-    .badge {
-      display: inline-block;
-      padding: 8px 18px;
-      background: rgba(233, 69, 96, 0.15);
-      border: 1px solid rgba(233, 69, 96, 0.4);
-      border-radius: 30px;
-      color: #E94560;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 24px;
-    }
-    h1 {
-      font-size: clamp(42px, 8vw, 72px);
+    .hero h1 {
+      font-size: clamp(38px, 7vw, 60px);
       font-weight: 900;
       letter-spacing: 8px;
-      background: linear-gradient(135deg, #ffffff 0%, #E94560 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      line-height: 1.1;
-      margin-bottom: 16px;
+      color: #ffffff;
+      margin-bottom: 12px;
     }
-    .subtitle {
-      font-size: clamp(16px, 2.5vw, 20px);
-      color: #ccc;
+    .hero .tagline {
+      color: #999;
       letter-spacing: 3px;
+      font-size: 15px;
       margin-bottom: 40px;
     }
-    .tagline {
+    .hero .intro {
+      max-width: 480px;
+      margin: 0 auto 36px;
+      color: #ccc;
       font-size: 15px;
-      color: #999;
-      max-width: 520px;
-      margin: 0 auto 32px;
     }
 
-    /* ============ WARNING BANNER ============ */
-    .warning-banner {
-      background: linear-gradient(135deg, rgba(255, 165, 0, 0.12) 0%, rgba(255, 193, 7, 0.08) 100%);
+    /* Warning */
+    .warning {
+      max-width: 520px;
+      margin: 0 auto 32px;
+      padding: 16px 18px;
+      background: rgba(255, 165, 0, 0.1);
       border: 1px solid rgba(255, 165, 0, 0.35);
       border-left: 4px solid #FFA500;
-      border-radius: 12px;
-      padding: 18px 20px;
-      margin: 0 auto 32px;
-      max-width: 560px;
+      border-radius: 10px;
       text-align: left;
       display: flex;
       gap: 14px;
       align-items: flex-start;
-      backdrop-filter: blur(6px);
     }
-    .warning-banner .warning-icon {
+    .warning svg {
       flex-shrink: 0;
-      width: 26px;
-      height: 26px;
-      background: rgba(255, 165, 0, 0.2);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 1px;
-    }
-    .warning-banner .warning-icon svg {
-      width: 16px;
-      height: 16px;
+      width: 22px;
+      height: 22px;
       stroke: #FFA500;
       stroke-width: 2.5;
       fill: none;
       stroke-linecap: round;
       stroke-linejoin: round;
+      margin-top: 2px;
     }
-    .warning-text { flex: 1; }
-    .warning-text h4 {
-      font-size: 14px;
-      font-weight: 700;
+    .warning h4 {
+      font-size: 13px;
       color: #FFC107;
-      margin-bottom: 6px;
-      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
-    .warning-text p {
+    .warning p {
       font-size: 13px;
       color: #ccc;
-      line-height: 1.6;
-      margin: 0;
+      line-height: 1.5;
     }
-    .warning-text p strong {
-      color: #FFC107;
-      font-weight: 600;
-    }
+    .warning strong { color: #FFC107; }
 
-    .download-btn {
+    /* Download button */
+    .download {
       display: inline-flex;
       align-items: center;
-      gap: 12px;
-      background: linear-gradient(135deg, #E94560 0%, #c73650 100%);
-      color: white;
-      padding: 20px 52px;
-      border-radius: 50px;
+      gap: 10px;
+      background: #E94560;
+      color: #fff;
+      padding: 16px 40px;
+      border-radius: 40px;
       text-decoration: none;
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 700;
-      letter-spacing: 1px;
-      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 10px 30px rgba(233, 69, 96, 0.4),
-                  0 0 0 0 rgba(233, 69, 96, 0.7);
-      animation: pulse 2.5s infinite;
-      position: relative;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 8px 24px rgba(233, 69, 96, 0.35);
     }
-    .download-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 40px rgba(233, 69, 96, 0.6),
-                  0 0 0 0 rgba(233, 69, 96, 0);
-      animation: none;
+    .download:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(233, 69, 96, 0.5);
     }
-    @keyframes pulse {
-      0% { box-shadow: 0 10px 30px rgba(233, 69, 96, 0.4), 0 0 0 0 rgba(233, 69, 96, 0.5); }
-      70% { box-shadow: 0 10px 30px rgba(233, 69, 96, 0.4), 0 0 0 20px rgba(233, 69, 96, 0); }
-      100% { box-shadow: 0 10px 30px rgba(233, 69, 96, 0.4), 0 0 0 0 rgba(233, 69, 96, 0); }
+    .download svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      stroke-width: 2.5;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
-
     .meta {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      margin-top: 32px;
-      flex-wrap: wrap;
+      margin-top: 24px;
+      color: #777;
       font-size: 13px;
-      color: #888;
     }
-    .meta span { display: flex; align-items: center; gap: 6px; }
-    .meta svg { width: 16px; height: 16px; }
+    .meta span { margin: 0 12px; }
 
-    /* ============ INSTALL STEPS ============ */
-    .install-guide {
+    /* Steps */
+    .steps {
       padding: 80px 24px;
-      background: linear-gradient(180deg, #1A1A2E 0%, #16213E 100%);
+      background: #16213E;
+    }
+    .steps h2 {
       text-align: center;
-    }
-    .install-guide h2 {
-      font-size: 30px;
+      font-size: 28px;
       font-weight: 800;
-      margin-bottom: 12px;
-      background: linear-gradient(135deg, #ffffff, #E94560);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      margin-bottom: 8px;
     }
-    .install-guide .section-sub {
+    .steps .sub {
+      text-align: center;
       color: #888;
-      font-size: 15px;
-      margin-bottom: 48px;
-      max-width: 520px;
-      margin-left: auto;
-      margin-right: auto;
+      margin-bottom: 40px;
+      font-size: 14px;
     }
-    .install-steps {
+    .step-grid {
+      max-width: 900px;
+      margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 28px;
-      max-width: 1000px;
-      margin: 0 auto;
+      gap: 20px;
     }
-    .install-step {
-      background: rgba(22, 33, 62, 0.6);
+    .step {
+      background: #1A1A2E;
+      padding: 24px 20px;
+      border-radius: 12px;
       border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 16px;
-      padding: 28px 22px;
-      text-align: left;
-      transition: all 0.3s;
     }
-    .install-step:hover {
-      border-color: rgba(233, 69, 96, 0.4);
-      transform: translateY(-4px);
-    }
-    .install-step-num {
-      display: inline-flex;
+    .step .num {
+      width: 32px;
+      height: 32px;
+      background: #E94560;
+      border-radius: 50%;
+      display: flex;
       align-items: center;
       justify-content: center;
-      width: 34px;
-      height: 34px;
-      background: linear-gradient(135deg, #E94560, #c73650);
-      border-radius: 50%;
-      font-weight: 900;
+      font-weight: 800;
       font-size: 15px;
       margin-bottom: 14px;
-      box-shadow: 0 6px 16px rgba(233, 69, 96, 0.35);
     }
-    .install-step h4 {
+    .step h4 {
       font-size: 15px;
-      font-weight: 700;
       margin-bottom: 8px;
-      color: #fff;
     }
-    .install-step p {
+    .step p {
       font-size: 13px;
       color: #999;
       line-height: 1.6;
     }
-    .install-step code {
+    .step code {
       background: rgba(233, 69, 96, 0.15);
       color: #E94560;
       padding: 2px 6px;
       border-radius: 4px;
       font-size: 12px;
-      font-family: 'Courier New', monospace;
     }
 
-    /* ============ FEATURES ============ */
+    /* Features */
     .features {
-      padding: 100px 24px;
-      max-width: 1200px;
+      padding: 80px 24px;
+      max-width: 1000px;
       margin: 0 auto;
     }
-    .section-title {
+    .features h2 {
       text-align: center;
-      font-size: 36px;
+      font-size: 28px;
       font-weight: 800;
-      margin-bottom: 12px;
-      background: linear-gradient(135deg, #ffffff, #E94560);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      margin-bottom: 40px;
     }
-    .section-subtitle {
-      text-align: center;
-      color: #888;
-      margin-bottom: 60px;
-      font-size: 15px;
-    }
-    .grid {
+    .feature-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
     }
-    .feature-card {
-      background: linear-gradient(145deg, #16213E 0%, #1f2a4a 100%);
-      border-radius: 20px;
-      padding: 36px 28px;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      transition: all 0.35s;
-      text-align: center;
+    .feature {
+      background: #16213E;
+      padding: 28px 22px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
     }
-    .feature-card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(233, 69, 96, 0.4);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    }
-    .feature-icon {
-      width: 64px;
-      height: 64px;
-      margin: 0 auto 20px;
-      background: rgba(233, 69, 96, 0.15);
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .feature-icon svg {
-      width: 30px;
-      height: 30px;
+    .feature svg {
+      width: 28px;
+      height: 28px;
       stroke: #E94560;
       stroke-width: 2;
       fill: none;
       stroke-linecap: round;
       stroke-linejoin: round;
+      margin-bottom: 14px;
     }
-    .feature-card h3 {
-      font-size: 19px;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-    .feature-card p {
-      color: #999;
-      font-size: 14px;
-      line-height: 1.7;
-    }
-
-    /* ============ HOW IT WORKS ============ */
-    .how-it-works {
-      padding: 100px 24px;
-      background: linear-gradient(180deg, #1A1A2E 0%, #16213E 100%);
-    }
-    .steps {
-      max-width: 900px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 32px;
-    }
-    .step {
-      text-align: center;
-      position: relative;
-    }
-    .step-num {
-      width: 50px;
-      height: 50px;
-      margin: 0 auto 20px;
-      background: linear-gradient(135deg, #E94560, #c73650);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      font-weight: 900;
-      box-shadow: 0 8px 20px rgba(233, 69, 96, 0.4);
-    }
-    .step h4 {
+    .feature h3 {
       font-size: 17px;
       margin-bottom: 8px;
     }
-    .step p {
-      color: #999;
+    .feature p {
       font-size: 13px;
+      color: #999;
+      line-height: 1.6;
     }
 
-    /* ============ CTA SECTION ============ */
+    /* CTA */
     .cta {
-      padding: 100px 24px;
+      padding: 80px 24px;
       text-align: center;
-      background: radial-gradient(circle at center, rgba(233, 69, 96, 0.15) 0%, transparent 70%);
+      background: linear-gradient(180deg, #1A1A2E 0%, #16213E 100%);
     }
     .cta h2 {
-      font-size: 36px;
+      font-size: 26px;
       font-weight: 800;
-      margin-bottom: 20px;
+      margin-bottom: 12px;
     }
     .cta p {
       color: #999;
-      margin-bottom: 40px;
-      font-size: 15px;
+      margin-bottom: 28px;
+      font-size: 14px;
     }
     .qr {
-      margin-top: 40px;
+      margin-top: 32px;
       display: inline-block;
-      padding: 20px;
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      padding: 14px;
+      background: #fff;
+      border-radius: 12px;
     }
+    .qr img { display: block; }
     .qr-label {
-      color: #888;
-      font-size: 13px;
-      margin-top: 16px;
-      letter-spacing: 1px;
+      color: #777;
+      font-size: 12px;
+      margin-top: 12px;
     }
 
-    /* ============ FOOTER ============ */
+    /* Footer */
     footer {
-      padding: 40px 24px;
+      padding: 32px 24px;
       text-align: center;
       border-top: 1px solid rgba(255, 255, 255, 0.05);
       color: #666;
-      font-size: 13px;
+      font-size: 12px;
     }
     footer .brand {
-      color: #E94560;
-      font-weight: 800;
-      letter-spacing: 3px;
-      margin-bottom: 8px;
       display: block;
+      margin-bottom: 8px;
+      color: #E94560;
     }
 
-    /* ============ RESPONSIVE ============ */
-    @media (max-width: 600px) {
-      .hero { padding: 100px 20px 60px; }
-      .download-btn { padding: 16px 40px; font-size: 16px; }
-      .features, .how-it-works, .cta, .install-guide { padding: 60px 20px; }
-      .section-title, .cta h2 { font-size: 26px; }
-      .install-guide h2 { font-size: 24px; }
-      .warning-banner { padding: 14px 16px; }
-      .warning-text h4 { font-size: 13px; }
-      .warning-text p { font-size: 12px; }
+    @media (max-width: 480px) {
+      .hero { padding: 120px 20px 60px; }
+      .download { padding: 14px 32px; font-size: 15px; }
+      .steps, .features, .cta { padding: 60px 20px; }
+      .steps h2, .features h2, .cta h2 { font-size: 22px; }
     }
   </style>
 </head>
 <body>
 
-<!-- NAVBAR -->
 <nav>
-  <div class="logo">PRESTIGIO</div>
+  <div class="brand">PRESTIGIO</div>
   <ul>
-    <li><a href="#install">Install Guide</a></li>
+    <li><a href="#install">Install</a></li>
     <li><a href="#features">Features</a></li>
     <li><a href="#download">Download</a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
-  <div class="hero-content">
-    <span class="badge">✦ Poolside &amp; Bar</span>
-    <h1>PRESTIGIO</h1>
-    <p class="subtitle">Poolside &amp; Bar</p>
-    <p class="tagline">
-      Order delicious food, refreshing drinks, and reserve your table —
-      all from the palm of your hand.
-    </p>
-
-    <!-- ⚠️ WARNING BANNER -->
-    <div class="warning-banner">
-      <div class="warning-icon">
-        <svg viewBox="0 0 24 24">
-          <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
-          <line x1="12" y1="9" x2="12" y2="13"/>
-          <line x1="12" y1="17" x2="12.01" y2="17"/>
-        </svg>
-      </div>
-      <div class="warning-text">
-        <h4>⚠️ IMPORTANT — Read Before Installing</h4>
-        <p>
-          When you install this app, your phone will ask you to
-          <strong>allow installs from unknown sources</strong>.
-          This is a standard Android security prompt — the app is safe,
-          we just distribute it directly (not via the Play Store).
-          Tap <strong>"Allow"</strong> when prompted to continue.
-        </p>
-      </div>
-    </div>
-
-    <a href="prestigio-v7.apk" class="download-btn" download>
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-        <polyline points="7 10 12 15 17 10"/>
-        <line x1="12" y1="15" x2="12" y2="3"/>
-      </svg>
-      Download App
-    </a>
-
-    <div class="meta">
-      <span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="#E94560" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        Secure Download
-      </span>
-      <span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="#E94560" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-        Under 20 MB
-      </span>
-      <span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="#E94560" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
-        Free Forever
-      </span>
-    </div>
-  </div>
-</section>
-
-<!-- INSTALL GUIDE -->
-<section class="install-guide" id="install">
-  <h2>How to Install the App</h2>
-  <p class="section-sub">
-    Since Prestigio is distributed directly (not via the Play Store),
-    your phone will show a security prompt during installation. Here's what to do:
+  <h1>PRESTIGIO</h1>
+  <p class="tagline">POOLSIDE &amp; BAR</p>
+  <p class="intro">
+    Download the app to order food and drinks, and reserve a table.
   </p>
 
-  <div class="install-steps">
-    <div class="install-step">
-      <div class="install-step-num">1</div>
-      <h4>Tap "Download App"</h4>
-      <p>The APK file will start downloading to your phone. It's under 20 MB and takes seconds.</p>
-    </div>
-
-    <div class="install-step">
-      <div class="install-step-num">2</div>
-      <h4>Open the APK File</h4>
-      <p>Once downloaded, tap <code>prestigio.apk</code> in your notifications or Downloads folder.</p>
-    </div>
-
-    <div class="install-step">
-      <div class="install-step-num">3</div>
-      <h4>Allow Unknown Sources</h4>
-      <p>Android will warn you with a prompt. Tap <strong style="color:#FFC107;">"Settings"</strong> → enable <strong style="color:#FFC107;">"Allow from this source"</strong> → then tap <strong style="color:#FFC107;">"Install"</strong>.</p>
-    </div>
-
-    <div class="install-step">
-      <div class="install-step-num">4</div>
-      <h4>Open &amp; Enjoy</h4>
-      <p>Sign up with your email, browse the menu, and start ordering. Welcome to Prestigio!</p>
+  <div class="warning">
+    <svg viewBox="0 0 24 24">
+      <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+      <line x1="12" y1="9" x2="12" y2="13"/>
+      <line x1="12" y1="17" x2="12.01" y2="17"/>
+    </svg>
+    <div>
+      <h4>Before you install</h4>
+      <p>
+        Android will ask you to allow installs from unknown sources.
+        Tap <strong>Settings</strong>, enable <strong>Allow from this source</strong>,
+        then tap <strong>Install</strong>.
+      </p>
     </div>
   </div>
-</section>
 
-<!-- FEATURES -->
-<section class="features" id="features">
-  <h2 class="section-title">Everything You Need</h2>
-  <p class="section-subtitle">One app. Every part of your Prestigio experience.</p>
-
-  <div class="grid">
-    <div class="feature-card">
-      <div class="feature-icon">
-        <svg viewBox="0 0 24 24"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg>
-      </div>
-      <h3>Browse the Menu</h3>
-      <p>Explore our full menu of dishes, meats, and hand-crafted drinks with photos and descriptions.</p>
-    </div>
-
-    <div class="feature-card">
-      <div class="feature-icon">
-        <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-      </div>
-      <h3>Order From Your Seat</h3>
-      <p>Add items to your cart and place your order instantly. Track it live from "Placed" to "Ready".</p>
-    </div>
-
-    <div class="feature-card">
-      <div class="feature-icon">
-        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-      </div>
-      <h3>Reserve a Table</h3>
-      <p>Book your spot by the pool in seconds. See your reservation status update in real time.</p>
-    </div>
-
-    <div class="feature-card">
-      <div class="feature-icon">
-        <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-      </div>
-      <h3>Order History</h3>
-      <p>See all your past orders and reservations. Reorder your favorites in one tap.</p>
-    </div>
-  </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section class="how-it-works" id="how">
-  <h2 class="section-title">How It Works</h2>
-  <p class="section-subtitle">Get started in less than a minute.</p>
-
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">1</div>
-      <h4>Download</h4>
-      <p>Tap the Download button and install the app on your Android phone.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <h4>Sign Up</h4>
-      <p>Create your free account in seconds with just an email.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <h4>Order or Reserve</h4>
-      <p>Browse the menu, add to cart, or book a table instantly.</p>
-    </div>
-  </div>
-</section>
-
-<!-- CTA + QR -->
-<section class="cta" id="download">
-  <h2>Ready to Experience Prestigio?</h2>
-  <p>Download the app now and start ordering in seconds.</p>
-
-  <a href="prestigio-v8.apk" class="download-btn" download>
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+  <a href="prestigio-v8.apk" class="download" download>
+    <svg viewBox="0 0 24 24">
       <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
       <polyline points="7 10 12 15 17 10"/>
       <line x1="12" y1="15" x2="12" y2="3"/>
@@ -647,19 +353,109 @@
     Download App
   </a>
 
-  <div class="qr-label">— or scan to download —</div>
-  <div class="qr">
-    <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://prestigio-bar-app.netlify.app&color=1A1A2E&bgcolor=FFFFFF" alt="QR Code" width="180" height="180">
+  <p class="meta">
+    <span>Android</span>
+    <span>19 MB</span>
+    <span>Free</span>
+  </p>
+</section>
+
+<section class="steps" id="install">
+  <h2>How to install</h2>
+  <p class="sub">Four steps, takes under a minute.</p>
+
+  <div class="step-grid">
+    <div class="step">
+      <div class="num">1</div>
+      <h4>Download</h4>
+      <p>Tap the download button. The file is under 20 MB.</p>
+    </div>
+    <div class="step">
+      <div class="num">2</div>
+      <h4>Open the file</h4>
+      <p>Tap <code>prestigio.apk</code> in your notifications or Downloads folder.</p>
+    </div>
+    <div class="step">
+      <div class="num">3</div>
+      <h4>Allow the install</h4>
+      <p>Android will show a security prompt. Tap <strong>Settings</strong>, enable <strong>Allow from this source</strong>, then tap <strong>Install</strong>.</p>
+    </div>
+    <div class="step">
+      <div class="num">4</div>
+      <h4>Sign up and order</h4>
+      <p>Create an account with your email, then browse the menu or reserve a table.</p>
+    </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<section class="features" id="features">
+  <h2>What's inside</h2>
+
+  <div class="feature-grid">
+    <div class="feature">
+      <svg viewBox="0 0 24 24">
+        <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/>
+        <path d="M7 2v20"/>
+        <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/>
+      </svg>
+      <h3>Menu</h3>
+      <p>Browse food, meats, and drinks with photos and prices.</p>
+    </div>
+
+    <div class="feature">
+      <svg viewBox="0 0 24 24">
+        <circle cx="9" cy="21" r="1"/>
+        <circle cx="20" cy="21" r="1"/>
+        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+      </svg>
+      <h3>Orders</h3>
+      <p>Add items to your cart and place your order. Track it from placed to ready.</p>
+    </div>
+
+    <div class="feature">
+      <svg viewBox="0 0 24 24">
+        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+        <line x1="16" y1="2" x2="16" y2="6"/>
+        <line x1="8" y1="2" x2="8" y2="6"/>
+        <line x1="3" y1="10" x2="21" y2="10"/>
+      </svg>
+      <h3>Reservations</h3>
+      <p>Reserve a table and see the status of your booking.</p>
+    </div>
+
+    <div class="feature">
+      <svg viewBox="0 0 24 24">
+        <path d="M9 11l3 3L22 4"/>
+        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+      </svg>
+      <h3>History</h3>
+      <p>See your past orders and reservations in one place.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="download">
+  <h2>Ready to order?</h2>
+  <p>Download the app and start in seconds.</p>
+
+  <a href="prestigio-v7.apk" class="download" download>
+    <svg viewBox="0 0 24 24">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+      <polyline points="7 10 12 15 17 10"/>
+      <line x1="12" y1="15" x2="12" y2="3"/>
+    </svg>
+    Download App
+  </a>
+
+  <p class="qr-label">Or scan to download</p>
+  <div class="qr">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://prestigio-bar-app.netlify.app&color=1A1A2E&bgcolor=FFFFFF" alt="QR code" width="160" height="160">
+  </div>
+</section>
+
 <footer>
   <span class="brand">PRESTIGIO</span>
-  <p>Poolside &amp; Bar · © 2026 · All rights reserved</p>
-  <p style="margin-top: 8px; font-size: 12px; color: #555;">
-    Distributed directly by Prestigio. Your data is secured with Firebase.
-  </p>
+  Poolside &amp; Bar
 </footer>
 
 </body>
